@@ -34,6 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: IconButton(
                     alignment: Alignment.topRight,
                     onPressed: () {
+                      // ignore: avoid_print
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -119,8 +120,16 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Movie_Screen()));
+                if (mail.text == "admin" && pw.text == "123") {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Movie_Screen(),
+                      ));
+                } else {
+                  // ignore: avoid_print
+                  print("Invalid password");
+                }
               },
               child: const Text(
                 "LogIn",
